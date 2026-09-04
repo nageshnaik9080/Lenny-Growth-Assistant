@@ -1,0 +1,36 @@
+{
+  "$schema": "https://docs.railway.app/schemas/railway.schema.json",
+  "build": {
+    "builder": "nixpacks"
+  },
+  "deployments": [
+    {
+      "service": "backend",
+      "root": "backend",
+      "healthcheckPath": "/api/health",
+      "environmentVariables": {
+        "PORT": "8000",
+        "DATABASE_URL": "${{Postgres.PRISMA_URL}}",
+        "DEFAULT_LLM_PROVIDER": "anthropic",
+        "ANTHROPIC_API_KEY": "${{ANTHROPIC_API_KEY}}",
+        "ANTHROPIC_MODEL": "claude-3-5-sonnet-20241022",
+        "OPENAI_API_KEY": "${{OPENAI_API_KEY}}",
+        "OPENAI_MODEL": "gpt-4o",
+        "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2",
+        "RETRIEVAL_TOP_K": "5",
+        "RETRIEVAL_THRESHOLD": "0.65",
+        "CORS_ORIGINS": "${{FRONTEND_URL}}",
+        "MAX_HISTORY_MESSAGES": "12",
+        "LOG_LEVEL": "INFO"
+      }
+    },
+    {
+      "service": "frontend",
+      "root": "frontend",
+      "environmentVariables": {
+        "PORT": "3000",
+        "NEXT_PUBLIC_API_URL": "https://${{backend.RAILWAY_STATIC_URL}}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { min-height: 100%; }
+body { margin: 0; background: #0b0d10; color: #f4f4f5; }
+* { box-sizing: border-box; }
+button, textarea, select { font: inherit; }
+.prose-like h2 { font-size: 1.25rem; font-weight: 700; margin-top: 1.4rem; }
+.prose-like h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; }
+.prose-like p { margin: .7rem 0; line-height: 1.7; }
+.prose-like ul { padding-left: 1.2rem; list-style: disc; }
+.prose-like code { background: #181b20; padding: .15rem .35rem; border-radius: .3rem; }
