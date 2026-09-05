@@ -7,7 +7,7 @@ import { useChatStream } from "../../hooks/useChatStream";
 
 export default function ChatPane({ sessionId, onArtifact }: { sessionId: string; onArtifact: (artifact: any) => void }) {
   const [input, setInput] = useState("");
-  const [provider, setProvider] = useState<Provider>("ollama");
+  const [provider, setProvider] = useState<Provider>("anthropic");
   const [mode, setMode] = useState<"default" | "ship30">("default");
   const [history, setHistory] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
   const { state, send } = useChatStream();
