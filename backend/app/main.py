@@ -32,7 +32,7 @@ app.add_middleware(
 @app.exception_handler(Exception)
 async def unhandled_exception(request: Request, exc: Exception):
     logging.getLogger(__name__).exception("Unhandled request error")
-    return JSONResponse(status_code=500, content={"detail": "Internal server error"})
+    return JSONResponse(status_code=500, content={"detail": str(exc)[:500]})
 
 
 app.include_router(sessions.router)
