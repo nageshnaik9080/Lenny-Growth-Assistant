@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     database_url: str
-    cors_origins: str = "https://lenny-frontend.onrender.com,https://lenny-frontend-20wq.onrender.com"
+    cors_origins: str = "https://lenny-frontend-csll.onrender.com"
 
     default_llm_provider: str = "anthropic"
     ollama_base_url: str = "http://localhost:11434"  # local only; not used on Render

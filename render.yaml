@@ -65,7 +65,7 @@ services:
       # Allow requests from the Render frontend.
       # If you rename the frontend service, update this to match.
       - key: CORS_ORIGINS
-        value: https://lenny-frontend.onrender.com,https://lenny-frontend-20wq.onrender.com
+        value: https://lenny-frontend-csll.onrender.com
 
       # Mark as secret — Render will prompt you to fill these in the dashboard.
       # Do NOT put real keys in this file.
