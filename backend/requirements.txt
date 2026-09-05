@@ -7,8 +7,11 @@ asyncpg==0.30.0
 pgvector==0.4.1
 httpx==0.28.1
 python-multipart==0.0.20
-sentence-transformers==4.1.0
-numpy==2.2.5
+# sentence-transformers is used only for local dev (local embedding model).
+# On Render, embeddings are generated via OpenAI API to avoid OOM on 512MB.
+# Uncomment the line below if you need local embeddings:
+# sentence-transformers==4.1.0
+# numpy==2.2.5
 pytest==8.3.5
 pytest-asyncio==0.26.0
 pytest-httpx==0.35.0

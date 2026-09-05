@@ -18,9 +18,9 @@ services:
           name: lenny-postgres
           property: connectionString
       - key: DEFAULT_LLM_PROVIDER
-        value: anthropic
+        value: openai
       - key: CLOUD_PROVIDER
-        value: anthropic
+        value: openai
       - key: ANTHROPIC_MODEL
         value: claude-3-5-sonnet-20241022
       - key: ANTHROPIC_API_KEY
