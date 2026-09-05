@@ -7,7 +7,7 @@ node_modules/
 .next/
 coverage/
 .DS_Store
-transcripts/
+transcripts/.gitkeep
 data/
 postgres_data/
 
