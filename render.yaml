@@ -23,7 +23,7 @@ services:
     name: lenny-backend
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    dockerContext: .
     plan: free
     healthCheckPath: /api/health
     envVars:
@@ -36,10 +36,10 @@ services:
           property: connectionString
 
       - key: DEFAULT_LLM_PROVIDER
-        value: anthropic
+        value: openai
 
       - key: CLOUD_PROVIDER
-        value: anthropic
+        value: openai
 
       - key: ANTHROPIC_MODEL
         value: claude-3-5-sonnet-20241022
@@ -70,7 +70,7 @@ services:
       # Mark as secret — Render will prompt you to fill these in the dashboard.
       # Do NOT put real keys in this file.
       - key: ANTHROPIC_API_KEY
-        sync: false
+        sync: true
 
       - key: OPENAI_API_KEY
         sync: false

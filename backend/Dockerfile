@@ -10,15 +10,14 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential curl git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY backend/requirements.txt .
 
 RUN python -m pip install --upgrade pip \
     && python -m pip install --no-cache-dir -r requirements.txt
 
-COPY app ./app
-COPY scripts ./scripts
-
-RUN mkdir -p /app/transcripts
+COPY backend/app ./app
+COPY backend/scripts ./scripts
+COPY transcripts ./transcripts
 
 EXPOSE 8000
 
