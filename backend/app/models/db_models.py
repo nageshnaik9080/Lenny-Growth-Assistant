@@ -60,4 +60,4 @@ class TranscriptChunk(Base):
     timestamp_ref: Mapped[str | None] = mapped_column(String(300), nullable=True)
     chunk_index: Mapped[int] = mapped_column(Integer)
     chunk_text: Mapped[str] = mapped_column(Text)
-    embedding: Mapped[list[float]] = mapped_column(Vector(384))
+    embedding: Mapped[list[float]] = mapped_column(Vector(1536))
