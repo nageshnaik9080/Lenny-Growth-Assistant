@@ -1,9 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.config import get_settings
 from app.database import get_db
-from app.providers.ollama_provider import OllamaProvider
 
 router = APIRouter(prefix="/api/health", tags=["Health"])
 
@@ -18,5 +16,11 @@ async def health(db: AsyncSession = Depends(get_db)):
         status["vector_index"] = count.scalar_one() > 0
     except Exception:
         pass
-    status["ollama"] = await OllamaProvider().health()
+    # Ollama is a local-only provider; on Render it is not available.
+    # We check it safely and never let it crash the health endpoint.
+    try:
+        from app.providers.ollama_provider import OllamaProvider
+        status["ollama"] = await OllamaProvider().health()
+    except Exception:
+        status["ollama"] = False
     return {"status": "ok" if status["db"] else "degraded", **status}
