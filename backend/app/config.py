@@ -4,10 +4,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     database_url: str
-    cors_origins: str
+    cors_origins: str = "https://lenny-frontend.onrender.com"
 
     default_llm_provider: str = "anthropic"
-    ollama_model: str = "llama3.2:3b" # Kept for local testing, not used in Railway deployment
+    ollama_base_url: str = "http://localhost:11434"  # local only; not used on Render
+    ollama_model: str = "llama3.2:3b"               # local only; not used on Render
 
     cloud_provider: str = "anthropic"
     anthropic_api_key: str = ""
